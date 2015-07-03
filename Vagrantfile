@@ -66,6 +66,14 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y apache2
+    sudo apt-get install -y curl
+    sudo apt-get install -y apache2 
+    echo "ServerName localhost" | sudo tee /etc/apache2/httpd.conf
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+    sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql
+    curl -sS https://getcomposer.org/installer | php
+    sudo mv composer.phar /usr/local/bin/composer
+    su - vagrant -c 'composer global require drush/drush:7.*'
+    echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.bashrc
   SHELL
 end
