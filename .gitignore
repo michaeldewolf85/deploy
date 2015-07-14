@@ -2,4 +2,5 @@
 # Ignore development files
 
 .vagrant
-
+# Drush Make location.
+root
