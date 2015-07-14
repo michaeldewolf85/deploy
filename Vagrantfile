@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y apache2 
     echo "ServerName localhost" | sudo tee /etc/apache2/httpd.conf
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
-    sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql
+    sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql php-gd
     curl -sS https://getcomposer.org/installer | php
     sudo mv composer.phar /usr/local/bin/composer
     su - vagrant -c 'composer global require drush/drush:7.*'
@@ -79,10 +79,12 @@ Vagrant.configure(2) do |config|
       do
         sudo cp /etc/apache2/sites-available/default "/etc/apache2/sites-available/root${i}"
         sudo cp /etc/apache2/sites-available/default-ssl "/etc/apache2/sites-available/root${i}-ssl"
-        sudo sed -i "s/\\/var\\/www/\\/var\\/www\\/root${i}/g" "/etc/apache2/sites-available/root${i}"*
-        sudo sed -i "s/ServerAdmin webmaster@localhost/ServerAdmin webmaster@localhost\\n        ServerName root${i}.com/g" "/etc/apache2/sites-available/root${i}"*
+        sudo sed -i 's/\\/var\\/www/\\/var\\/www\\/root/g' "/etc/apache2/sites-available/root${i}"*
+        sudo sed -i "s/ServerAdmin webmaster@localhost/ServerAdmin webmaster@localhost\\n        ServerName www.root${i}.com\\n        ServerAlias root${i}.com *.root${i}.com/g" "/etc/apache2/sites-available/root${i}"*
+        sudo sed -i 's/AllowOverride None/AllowOverride All/>/g' "/etc/apache2/sites-available/root${1}"*
         sudo ln -s "/vagrant/root${i}" "/var/www/root${i}"
         sudo a2ensite "root${i} root${i}-ssl"
+        echo "CREATE DATABASE root${1}" | mysql -uroot -h127.0.0.1
       done
     sudo service apache2 reload
   SHELL
