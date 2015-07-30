@@ -82,7 +82,6 @@ Vagrant.configure(2) do |config|
         sudo sed -i 's/\\/var\\/www/\\/var\\/www\\/root/g' "/etc/apache2/sites-available/root${i}"*
         sudo sed -i "s/ServerAdmin webmaster@localhost/ServerAdmin webmaster@localhost\\n        ServerName www.root${i}.com\\n        ServerAlias root${i}.com *.root${i}.com/g" "/etc/apache2/sites-available/root${i}"*
         sudo sed -i 's/AllowOverride None/AllowOverride All/g' "/etc/apache2/sites-available/root${1}"*
-        sudo ln -s /vagrant/root /var/www/root
         sudo a2ensite "root${i} root${i}-ssl"
         echo "CREATE DATABASE root${i}" | mysql -uroot -h127.0.0.1
       done
