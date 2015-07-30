@@ -85,6 +85,7 @@ Vagrant.configure(2) do |config|
         sudo a2ensite "root${i} root${i}-ssl"
         echo "CREATE DATABASE root${i}" | mysql -uroot -h127.0.0.1
       done
+    sudo a2enmod rewrite
     sudo service apache2 reload
   SHELL
 end
