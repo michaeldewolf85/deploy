@@ -87,5 +87,6 @@ Vagrant.configure(2) do |config|
       done
     sudo a2enmod rewrite
     sudo service apache2 reload
+    echo '127.0.0.1 www.root1.com root1.com www.root2.com root2.com' | sudo tee -a /etc/hosts
   SHELL
 end
