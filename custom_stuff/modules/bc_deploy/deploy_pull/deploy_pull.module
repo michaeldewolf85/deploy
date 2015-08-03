@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the deploy_pull feature.
+ */
+
+include_once 'deploy_pull.features.inc';
