@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the deploy_push feature.
+ */
+
+include_once 'deploy_push.features.inc';
