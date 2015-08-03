@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the Deploy FPP module.
+ */
+
+/**
+ * Implements hook form_alter().
+ */
+function deploy_fpp_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'fieldable_panels_panes_entity_edit_form') {
+    // Check to see if module enabled, make dependency?
+    if (module_exists('deploy_managed_ui')) {
+      deploy_managed_ui_form_elements($form, 'deploy_fpp_form_submit');
+    }
+  }
+}
+
+/**
+ * Submit handler for edit link forms to add to deployment plan.
+ */
+function deploy_fpp_form_submit(&$form, &$form_state) {
+  foreach ($form_state['values']['deploy_managed_ui']['plans'] as $plan => $checked) {
+    if ($checked) {
+      $fpid = $form_state['entity']->fpid;
+      // Reload entity resetting internal cache otherwise it will use original revision.
+      $fpp = entity_load('fieldable_panels_pane', array($fpid), array(), TRUE);
+      deploy_manager_add_to_plan($plan, 'fieldable_panels_pane', $fpp[$fpid]);
+    }
+  }
+}
+
+
+function deploy_fpp_deploy_rest_service_uri_alter(&$uri, &$entity) {
+  if ($entity->__metadata['type'] != 'fieldable_panels_pane') {
+    return;
+  }
+  $uri = "entity_{$uri}";
+}

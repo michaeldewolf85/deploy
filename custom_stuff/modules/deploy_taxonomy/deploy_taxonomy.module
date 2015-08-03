@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the Deploy Taxonomy module.
+ */
+
+/**
+ * Implements hook form_alter().
+ */
+function deploy_taxonomy_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'taxonomy_form_term') {
+    // Check to see if module enabled, make dependency?
+    if (module_exists('deploy_managed_ui')) {
+      deploy_managed_ui_form_elements($form, 'deploy_taxonomy_form_submit');
+    }
+  }
+}
+
+/**
+ * Submit handler for edit link forms to add to deployment plan.
+ */
+function deploy_taxonomy_form_submit(&$form, &$form_state) {
+  foreach ($form_state['values']['deploy_managed_ui']['plans'] as $plan => $checked) {
+    if ($checked) {
+      $tid = $form_state['values']['tid'];
+      $term = taxonomy_term_load($tid);
+      deploy_manager_add_to_plan($plan, 'taxonomy_term', $term);
+    }
+  }
+}

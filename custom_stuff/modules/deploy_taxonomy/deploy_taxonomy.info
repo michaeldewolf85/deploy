@@ -1,0 +1,3 @@
+name = Deploy Taxonomy Terms
+description = Allows for deployment of taxonomy terms.
+core = 7.x
