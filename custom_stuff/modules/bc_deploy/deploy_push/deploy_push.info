@@ -12,7 +12,6 @@ dependencies[] = rest_server
 dependencies[] = uuid 
 dependencies[] = entity 
 dependencies[] = uuid_services 
-dependencies[] = ctools 
 dependencies[] = views 
 dependencies[] = views_ui 
 dependencies[] = entity_dependency 
