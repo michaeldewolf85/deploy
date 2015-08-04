@@ -31,10 +31,12 @@ function deploy_fpp_form_submit(&$form, &$form_state) {
   }
 }
 
-
-function deploy_fpp_deploy_rest_service_uri_alter(&$uri, &$entity) {
+/**
+ * Implements hook_deploy_entity_alter().
+ */
+function deploy_fpp_deploy_entity_alter(&$entity, $type) {
   if ($entity->__metadata['type'] != 'fieldable_panels_pane') {
     return;
   }
-  $uri = "entity_{$uri}";
+  $entity->__metadata['uri'] = "entity_{$entity->__metadata['uri']}";
 }
