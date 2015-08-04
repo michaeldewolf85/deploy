@@ -10,6 +10,7 @@ dependencies[] = uuid_services
 dependencies[] = views 
 dependencies[] = views_ui
 dependencies[] = file_entity
+dependencies[] = fieldable_panels_panes
 features[ctools][] = services:services:3
 features[features_api][] = api:2
 features[services_endpoint][] = content_hub
