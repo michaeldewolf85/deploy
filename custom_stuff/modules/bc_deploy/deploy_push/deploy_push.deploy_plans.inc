@@ -25,7 +25,6 @@ function deploy_push_deploy_plans_default() {
   $plan->processor_plugin = 'DeployProcessorQueue';
   $plan->processor_config = array();
   $plan->endpoints = array(
-    'us_website' => 'us_website',
     'uk_website' => 'uk_website',
     'fr_website' => 'fr_website',
     'de_website' => 'de_website',
@@ -49,8 +48,7 @@ function deploy_push_deploy_plans_default() {
   $plan->processor_plugin = 'DeployProcessorQueue';
   $plan->processor_config = array();
   $plan->endpoints = array(
-    'us_website' => 'us_website',
-    'uk_website' => 0,
+    'uk_website' => 'uk_website',
     'fr_website' => 0,
     'de_website' => 0,
     'cn_website' => 0,
