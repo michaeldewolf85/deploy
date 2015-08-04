@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the Deploy pull module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function deploy_pull_install() {
+  variable_set('uuid_services_support_all_entity_types', TRUE);
+}
