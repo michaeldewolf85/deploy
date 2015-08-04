@@ -82,23 +82,5 @@ function deploy_push_deploy_endpoints_default() {
   );
   $export['uk_website'] = $endpoint;
 
-  $endpoint = new DeployEndpoint();
-  $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
-  $endpoint->api_version = 1;
-  $endpoint->name = 'us_website';
-  $endpoint->title = 'US Website';
-  $endpoint->description = '';
-  $endpoint->debug = 0;
-  $endpoint->authenticator_plugin = 'DeployAuthenticatorSession';
-  $endpoint->authenticator_config = array(
-    'username' => 'root2',
-    'password' => 'pass',
-  );
-  $endpoint->service_plugin = 'DeployServiceRestJSON';
-  $endpoint->service_config = array(
-    'url' => 'http://www.root2.com/services/rest',
-  );
-  $export['us_website'] = $endpoint;
-
   return $export;
 }
