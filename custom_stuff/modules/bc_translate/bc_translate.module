@@ -4,3 +4,12 @@
  * @file
  * Hooks for the BC translate module.
  */
+
+/**
+ * Implements hook_entity_uuid_save().
+ *
+ * This is called when any entity is saved using deploy.
+ */
+function bc_translate_entity_uuid_save($entity, $entity_type) {
+
+}
