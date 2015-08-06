@@ -14,4 +14,11 @@ function bc_translate_install() {
   add_locale_mapping('fr', 'French', 'fr_FR');
   add_locale_mapping('zh-hans', 'Chinese, Simplified', 'zh_CN');
   add_locale_mapping('de', 'German', 'de_DE');
+  variable_set('transperfect_pd_url', '');
+  variable_set('transperfect_pd_username', '');
+  variable_set('transperfect_pd_password', '');
+  variable_set('transperfect_pd_projectid', '');
+  variable_set('transperfect_pd_submissionprefix', '');
+  variable_set('transperfect_pd_classifier', '');
+  variable_set('transperfect_pd_max_target', '');
 }
