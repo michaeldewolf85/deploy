@@ -7,5 +7,6 @@ drush si -y --db-url=mysql://root:@localhost/root2 --account-name=root2 --accoun
 sudo ln -s /vagrant/custom_stuff/modules /vagrant/root/sites/all/modules/custom
 drush --uri=www.root1.com en deploy_push -y
 drush --uri=www.root2.com en deploy_pull -y
+drush --uri=www.root2.com en bc_translate -y
 drush --uri=www.root1.com uli
 drush --uri=www.root2.com uli
