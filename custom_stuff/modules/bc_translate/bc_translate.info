@@ -1,4 +1,16 @@
 name = BC Translate
 description = Provides transperfect configuration and workflow.
 core = 7.x
-package = Features
+package = Other
+dependencies[] = features
+dependencies[] = locale
+dependencies[] = transperfect
+dependencies[] = transperfect_fieldable_panels
+dependencies[] = transperfect_menu
+dependencies[] = transperfect_taxonomy
+features[features_api][] = api:2
+features[language][] = de
+features[language][] = en
+features[language][] = en-gb
+features[language][] = fr
+features[language][] = zh-hans
