@@ -1,4 +1,5 @@
-name = deploy_pull
+name = Deploy Pull
+description = Configures a pull instance for deploy.
 core = 7.x
 package = Features
 dependencies[] = ctools
