@@ -440,12 +440,14 @@ function get_translated_fieldable_panels($pd4, &$globalLink_arr) {
       $fields = get_fieldable_panels_pane_fields();
       foreach ($fields as $field) {
         $t_field_lang = LANGUAGE_NONE;
-        if (key($translated_arr[$field]) !== LANGUAGE_NONE) {
-          $t_field_lang = key($translated_arr[$field]);
-        }
         if (empty($translated_arr[$field])) {
           continue;
         }
+
+        if (key($translated_arr[$field]) !== LANGUAGE_NONE) {
+          $t_field_lang = key($translated_arr[$field]);
+        }
+   
         if (empty($entity->{$field}[$target_locale]) && $target_locale != LANGUAGE_NONE) {
             $entity->{$field}[$target_locale] = $entity->{$field}[$t_field_lang];
         }
@@ -477,6 +479,7 @@ function get_translated_fieldable_panels($pd4, &$globalLink_arr) {
       );
 
       fieldable_panels_panes_save($entity);
+      update_tpt_fieldable_panels_status($globalLink);
       sendDownloadConfirmation($globalLink->targetTicket, $pd4);
     }
     catch (SoapFault $se) {

@@ -936,5 +936,3 @@ class ProjectService2 extends SoapClient {
     }
 
 }
-
-?>

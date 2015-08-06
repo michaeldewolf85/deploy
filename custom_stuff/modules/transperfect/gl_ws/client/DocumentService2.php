@@ -978,5 +978,3 @@ class DocumentService2 extends SoapClient {
     }
 
 }
-
-?>

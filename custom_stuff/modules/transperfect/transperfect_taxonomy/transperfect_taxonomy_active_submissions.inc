@@ -76,7 +76,7 @@ function transperfect_taxonomy_active_select_form_submit($form, &$form_state) {
       drupal_set_message(t('Submission has been cancelled successfully.'));
     }
     catch (SoapFault $se) {
-      gl_log(TPT_OBJECT_TYPE_TAXONOMY, TPT_LOGGING_SEVERITY_ERROR, "SOAP Exception in Cancel Submissions - transperfect_taxonomy_active_select_form_submit - Code[$se->faultcode], Message[$e->faultstring]");
+      gl_log(TPT_OBJECT_TYPE_TAXONOMY, TPT_LOGGING_SEVERITY_ERROR, "SOAP Exception in Cancel Submissions - transperfect_taxonomy_active_select_form_submit - Code[$se->faultcode], Message[$se->faultstring]");
       form_set_error('', check_plain('Web Services Error: ' . $se->faultcode . ' - ' . $se->faultstring));
     }
     catch (Exception $e) {

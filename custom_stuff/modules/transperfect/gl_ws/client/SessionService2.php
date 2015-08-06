@@ -97,5 +97,3 @@ class SessionService2 extends SoapClient {
     }
 
 }
-
-?>

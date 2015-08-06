@@ -85,7 +85,7 @@ function update_entity_ticket_id($arr, $project_code) {
     $source_locale_code = get_drupal_locale_code($globalLink->sourceLocale);
     foreach ($target_locale_arr as $target_locale) {
       $row = get_transperfect_entity_row_by_nid_and_locale($nid, $globalLink->sourceLocale, $target_locale);
-      $title = $node->title_field[$source_locale_code][0]['value'];
+      $title = $node->title;
       if ($row) {
         db_update('transperfect_core_entity')
                 ->fields(array('vid' => $globalLink->vid, 'title' => $title,'document_ticket' => $globalLink->documentTicket,

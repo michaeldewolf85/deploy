@@ -1240,5 +1240,3 @@ class TargetService2 extends SoapClient {
     }
 
 }
-
-?>

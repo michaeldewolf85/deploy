@@ -100,5 +100,3 @@ function module_transperfect_translate_node_for_language($source_node, $drupal_t
     return TRUE;
   }
 }
-
-?>

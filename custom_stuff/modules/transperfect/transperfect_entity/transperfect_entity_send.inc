@@ -596,16 +596,16 @@ function transperfect_dashboard_entity_form() {
                 }
               }
 
-              if (isset($node->title_field[$source_lang])) {
+              if (module_exists("title") && isset($node->title_field[$source_lang])) {
                 $title = l(format_display_string($node->title_field[$source_lang][0]['value']), 'node/' . $item->nid);
               }
               else {
-                continue;
+                $title = l(format_display_string($node->title), 'node/' . $item->nid);
               }
 
               $rows[$item->nid . '-' . $item->vid] = array(
                   'nid' => $item->nid,
-                  'title' => l(format_display_string($item->title), 'node/' . $item->nid),
+                  'title' => $title,
                   'type' => $item->name,
                   'language' => $drupal_locale_desc,
                   'changed' => date('Y-m-d H:i:s', $item->changed),
@@ -795,9 +795,16 @@ function transperfect_dashboard_entity_form() {
               }
             }
 
+            if (module_exists("title") && isset($node->title_field[$source_lang])) {
+              $node_title = l(format_display_string($node->title_field[$source_lang][0]['value']), 'node/' . $item->nid);
+            }
+            else {
+              $node_title = l(format_display_string($node->title), 'node/' . $item->nid);
+            }
+
             $rows[$item->nid . '-' . $vid] = array(
                 'nid' => $item->nid,
-                'title' => l(format_display_string($item->title), 'node/' . $item->nid),
+                'title' => $node_title,
                 'type' => $item->name,
                 'language' => $drupal_locale_desc,
                 'changed' => date('Y-m-d H:i:s', $item->changed),
@@ -947,7 +954,6 @@ function transperfect_dashboard_entity_form() {
       }
 
       drupal_add_css($module_path . '/css/transperfect.css');
-      drupal_add_js($module_path . '/transperfect_entity/js/transperfect_send.js');
     }
   }
   return $form;

@@ -673,7 +673,15 @@ function transperfect_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         $nid = $node->nid;
       }
 
-      if (!translation_supported($node->type)) {
+      if (translation_supported_type($node->type)) {
+        $send_link = transperfect_get_root_menu('transperfect-translations/dashboard');
+        $active_link = transperfect_get_root_menu('transperfect-translations/activeSubmissions');
+      }
+      elseif (entity_translation_node_supported_type($node->type)) {
+        $send_link = transperfect_get_root_menu('transperfect-translations/dashboard/entity');
+        $active_link = transperfect_get_root_menu('transperfect-translations/activeSubmissions/entity');
+      }
+      else {
         return;
       }
 
@@ -708,13 +716,13 @@ function transperfect_menu_local_tasks_alter(&$data, $router_item, $root_path) {
       if ($pending) {
         if (user_access(TPT_ROLE_MANAGE_TRANSLATIONS) || user_access(TPT_ROLE_DO_TRANSALTIONS)) {
           $data['actions']['output']['transperfect']['#link']['title'] = t('Send for translation');
-          $data['actions']['output']['transperfect']['#link']['href'] = transperfect_get_root_menu('transperfect-translations/dashboard');
+          $data['actions']['output']['transperfect']['#link']['href'] = $send_link;
           $data['actions']['output']['transperfect']['#link']['localized_options'] = array('query' => array('rnid' => $nid));
         }
       }
       else {
         $data['actions']['output']['transperfect']['#link']['title'] = t('This content has been sent out for translation.');
-        $data['actions']['output']['transperfect']['#link']['href'] = transperfect_get_root_menu('transperfect-translations/activeSubmissions');
+        $data['actions']['output']['transperfect']['#link']['href'] = $active_link;
         $data['actions']['output']['transperfect']['#link']['localized_options'] = array('query' => array('rnid' => $nid));
       }
     }

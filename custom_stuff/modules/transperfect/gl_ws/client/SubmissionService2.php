@@ -1091,5 +1091,3 @@ class SubmissionService2 extends SoapClient {
     }
 
 }
-
-?>

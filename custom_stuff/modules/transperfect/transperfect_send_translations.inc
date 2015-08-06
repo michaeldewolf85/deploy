@@ -934,7 +934,6 @@ function transperfect_dashboard_node_form() {
       }
 
       drupal_add_css($module_path . '/css/transperfect.css');
-      drupal_add_js($module_path . '/js/transperfect_send.js');
     }
   }
   return $form;
