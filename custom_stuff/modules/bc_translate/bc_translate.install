@@ -38,4 +38,14 @@ function bc_translate_install() {
     $menu['i18n_mode'] = 5;
     menu_save($menu);
   }
+  // Configure Internationalization for Fieldable Panels Panes.
+  $entity_trans_types = variable_get('entity_translation_entity_types');
+  foreach ($entity_trans_types as $key => &$value) {
+    if ($key == 'fieldable_panels_pane') {
+      $value = 'fieldable_panels_pane';
+      continue;
+    }
+    $value = 0;
+  }
+  variable_set('entity_translation_entity_types', $entity_trans_types);
 }
