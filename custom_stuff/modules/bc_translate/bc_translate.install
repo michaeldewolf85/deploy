@@ -42,7 +42,7 @@ function bc_translate_install() {
   $entity_trans_types = variable_get('entity_translation_entity_types');
   foreach ($entity_trans_types as $key => &$value) {
     if ($key == 'fieldable_panels_pane') {
-      $value = 'fieldable_panels_pane';
+      $value = $key;
       continue;
     }
     $value = 0;
