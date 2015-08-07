@@ -4,15 +4,9 @@ require_once TPT_ROOT . '/' . ('gl_ws/client/SessionService2.php');
 require_once TPT_ROOT . '/' . ('gl_ws/client/ProjectService2.php');
 require_once TPT_ROOT . '/' . ('gl_ws/client/DocumentService2.php');
 require_once TPT_ROOT . '/' . ('gl_ws/client/SubmissionService2.php');
+global $base_url;
 
-if (filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_HOST')) {
-  define('GL_WSDL_PATH', 'http://' . filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_HOST')
-          . base_path() . drupal_get_path('module', 'transperfect') . '/gl_ws/wsdl/');
-}
-else {
-  define('GL_WSDL_PATH', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST')
-          . base_path() . drupal_get_path('module', 'transperfect') . '/gl_ws/wsdl/');
-}
+define('GL_WSDL_PATH', $base_url . '/' . drupal_get_path('module', 'transperfect') . '/gl_ws/wsdl/');
 
 function get_user_PD_projects($pdObject) {
   $username = $pdObject->username;
