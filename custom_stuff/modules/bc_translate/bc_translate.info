@@ -8,6 +8,7 @@ dependencies[] = transperfect
 dependencies[] = transperfect_fieldable_panels
 dependencies[] = transperfect_menu
 dependencies[] = transperfect_taxonomy
+dependencies[] = entity_translation
 features[features_api][] = api:2
 features[language][] = de
 features[language][] = en
