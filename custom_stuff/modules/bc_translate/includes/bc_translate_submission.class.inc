@@ -15,8 +15,6 @@
  */
 class BCTranslateSubmission {
 
-  const TMS_OP = 'Send for Translation';
-
   /**
    * @var string $form_id
    *  The form_id of the form to submit.
@@ -57,7 +55,7 @@ class BCTranslateSubmission {
       $identifier = "{$id}-{$vid}";
       $this->form_state['values']['table'][$identifier] = $identifier;
     }
-    $this->form_state['values']['op'] = $this::TMS_OP;
+    $this->form_state['values']['op'] = TPT_BTN_DASHBOARD_SEND;
     drupal_form_submit($this->form_id, $this->form_state);
   }
 
