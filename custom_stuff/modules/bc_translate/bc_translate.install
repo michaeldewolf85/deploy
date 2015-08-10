@@ -38,4 +38,9 @@ function bc_translate_install() {
     $menu['i18n_mode'] = 5;
     menu_save($menu);
   }
+  // Configure Internationalization for Fieldable Panels Panes.
+  module_load_include('inc', 'entity_translation', 'entity_translation.admin');
+  $form_state = array();
+  $form_state['values']['entity_translation_entity_types']['fieldable_panels_pane'] = 'fieldable_panels_pane';
+  drupal_form_submit('entity_translation_admin_form', $form_state);
 }
