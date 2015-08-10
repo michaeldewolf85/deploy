@@ -45,9 +45,17 @@ class BCTranslateSubmission {
 
   /**
    * Send entity for translation.
+   *
+   * @param array $ids
+   *  An array of ids. Keys are entity ids, values are revision ids.
    */
-  public function send() {
-
+  public function send($ids = array()) {
+    module_load_include('inc', 'transperfect', 'transperfect_send_translations');
+    foreach ($ids as $id => $vid) {
+      $identifier = "{$id}-{$vid}";
+      $this->form_state['values']['table'][$identifier] = $identifier;
+    }
+    drupal_form_submit($this->form_id, $this->form_state);
   }
 
   /**
