@@ -33,19 +33,9 @@ function bc_translate_install() {
   }
   // Configure Internationalization for Menu items.
   $site_menus = menu_get_menus();
-  foreach (array_keys($menus) as $menu_name) {
+  foreach (array_keys($site_menus) as $menu_name) {
     $menu = menu_load($menu_name);
     $menu['i18n_mode'] = 5;
     menu_save($menu);
   }
-  // Configure Internationalization for Fieldable Panels Panes.
-  $entity_trans_types = variable_get('entity_translation_entity_types');
-  foreach ($entity_trans_types as $key => &$value) {
-    if ($key == 'fieldable_panels_pane') {
-      $value = $key;
-      continue;
-    }
-    $value = 0;
-  }
-  variable_set('entity_translation_entity_types', $entity_trans_types);
 }
