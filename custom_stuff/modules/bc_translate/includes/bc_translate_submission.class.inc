@@ -67,7 +67,15 @@ class BCTranslateSubmission {
    */
   private function setFormID($entity_type) {
     switch ($entity_type) {
-
+      case 'fieldable_panels_pane':
+        $entity_type = 'fieldable_panels';
+        break;
+      case 'menu_link':
+        $entity_type = 'menu';
+        break;
+      case 'taxonomy_term':
+        $entity_type = 'taxonomy';
+        break;
     }
     $this->form_id = "transperfect_dashboard_{$entity_type}_form";
   }
