@@ -16,3 +16,4 @@ features[language][] = en-gb
 features[language][] = fr
 features[language][] = zh-hans
 files[] = includes/bc_translate_submission.class.inc
+files[] = includes/bc_translate_factory.class.inc
