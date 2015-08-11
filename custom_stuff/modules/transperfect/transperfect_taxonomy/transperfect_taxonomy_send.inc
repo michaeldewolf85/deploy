@@ -183,8 +183,6 @@ function transperfect_dashboard_taxonomy_form() {
     $default_language = language_default();
     $default = $default_language->language;
 
-    unset($target_lang_arr[get_tpt_locale_code($default)]);
-
     $t_count = 0;
     foreach ($target_lang_arr as $key => $value) {
       $t_count++;

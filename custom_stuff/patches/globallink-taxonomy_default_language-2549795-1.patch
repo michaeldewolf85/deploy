@@ -1,0 +1,20 @@
+diff --git a/transperfect_taxonomy/transperfect_taxonomy_send.inc b/transperfect_taxonomy/transperfect_taxonomy_send.inc
+index 0f31516..0c21470 100644
+--- a/transperfect_taxonomy/transperfect_taxonomy_send.inc
++++ b/transperfect_taxonomy/transperfect_taxonomy_send.inc
+@@ -183,8 +183,6 @@ function transperfect_dashboard_taxonomy_form() {
+     $default_language = language_default();
+     $default = $default_language->language;
+ 
+-    unset($target_lang_arr[get_tpt_locale_code($default)]);
+-
+     $t_count = 0;
+     foreach ($target_lang_arr as $key => $value) {
+       $t_count++;
+@@ -487,4 +485,4 @@ function transperfect_dashboard_taxonomy_form_submit($form, &$form_state) {
+       form_set_error('', check_plain('Error: ' . $ex->getMessage()));
+     }
+   }
+-}
+\ No newline at end of file
++}
