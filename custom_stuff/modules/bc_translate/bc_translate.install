@@ -10,7 +10,7 @@
  */
 function bc_translate_install() {
   module_load_include('inc', 'transperfect', 'transperfect_locale_mapping');
-  add_locale_mapping('en', 'English', 'en');
+  add_locale_mapping('en', 'English', 'en_US');
   add_locale_mapping('fr', 'French', 'fr_FR');
   add_locale_mapping('zh-hans', 'Chinese, Simplified', 'zh_CN');
   add_locale_mapping('de', 'German', 'de_DE');
