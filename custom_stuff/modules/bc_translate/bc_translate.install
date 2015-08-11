@@ -22,22 +22,21 @@ function bc_translate_install() {
   variable_set('transperfect_pd_classifier', 'XML');
   variable_set('transperfect_pd_max_target', '99999');
   save_project_names();
+
   // Configure Internationalization for Nodes.
   module_load_include('inc', 'transperfect', 'transperfect_field_configuration');
   foreach (node_type_get_types() as $node_type) {
     variable_set("language_content_type_{$node_type->type}", TRANSLATION_ENABLED);
     // Queue all fields for translation on each content type during install.
-    $form_state = array();
-    $form_state['values']['select_type'] = $node_type;
-    $form_state['values']['pending_fields'] = '[all]';
-    $form_state['values']['op'] = 'Add';
-    drupal_form_submit('transperfect_field', $form_state);
+    insert_gl_field_config('[all]', $node_type->type);
   }
+
   // Configure Internationalization for Taxonomy terms.
   foreach (taxonomy_get_vocabularies() as $vocabulary) {
     $vocabulary->i18n_mode = 4;
     taxonomy_vocabulary_save($vocabulary);
   }
+
   // Configure Internationalization for Menu items.
   $site_menus = menu_get_menus();
   foreach (array_keys($site_menus) as $menu_name) {
@@ -45,9 +44,11 @@ function bc_translate_install() {
     $menu['i18n_mode'] = 5;
     menu_save($menu);
   }
+
   // Configure Internationalization for Fieldable Panels Panes.
   module_load_include('inc', 'entity_translation', 'entity_translation.admin');
   $form_state = array();
   $form_state['values']['entity_translation_entity_types']['fieldable_panels_pane'] = 'fieldable_panels_pane';
   drupal_form_submit('entity_translation_admin_form', $form_state);
+
 }
