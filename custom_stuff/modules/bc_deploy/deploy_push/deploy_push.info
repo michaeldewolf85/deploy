@@ -19,6 +19,7 @@ dependencies[] = entity_dependency
 dependencies[] = file_entity
 dependencies[] = fieldable_panels_panes
 dependencies[] = features
+dependencies[] = entity_menu_links
 features[ctools][] = deploy:deploy_endpoints:1
 features[ctools][] = deploy:deploy_plans:1
 features[deploy_endpoints][] = cn_website
