@@ -64,7 +64,6 @@ class BCTranslateSubmission {
   public function send($ids = array()) {
     $this->form_state['values']['table'] = $ids;
     $this->form_state['values']['op'] = TPT_BTN_DASHBOARD_SEND;
-    dpm($this->form_state);
     drupal_form_submit($this->form_id, $this->form_state);
     unset($_SESSION[$this->lang_session]);
   }
