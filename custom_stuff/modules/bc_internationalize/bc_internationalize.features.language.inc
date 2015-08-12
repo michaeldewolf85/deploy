@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * bc_translate.features.language.inc
+ * bc_internationalize.features.language.inc
  */
 
 /**
  * Implements hook_locale_default_languages().
  */
-function bc_translate_locale_default_languages() {
+function bc_internationalize_locale_default_languages() {
   $languages = array();
 
   // Exported language: de.

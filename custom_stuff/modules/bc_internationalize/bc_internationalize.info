@@ -1,0 +1,16 @@
+name = BC Internationalize.
+description = Configures a website for internationalization.
+core = 7.x
+package = Other
+dependencies[] = entity_translation
+dependencies[] = i18n
+dependencies[] = i18n_menu
+dependencies[] = i18n_string
+dependencies[] = i18n_taxonomy
+dependencies[] = fieldable_panels_panes
+features[features_api][] = api:2
+features[language][] = de
+features[language][] = en
+features[language][] = en-gb
+features[language][] = fr
+features[language][] = zh-hans
