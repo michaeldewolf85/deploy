@@ -11,7 +11,7 @@ function bc_internationalize_install() {
   
   // Configure Internationalization for Nodes.
   foreach (node_type_get_types() as $node_type) {
-    variable_set("language_content_type_{$node_type->type}", TRANSLATION_ENABLED);
+    variable_set("language_content_type_{$node_type->type}", 2);
   }
 
   // Configure Internationalization for Taxonomy terms.
