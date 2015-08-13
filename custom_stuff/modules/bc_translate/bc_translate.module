@@ -11,5 +11,6 @@
  * This is called when any entity is saved using deploy.
  */
 function bc_translate_entity_uuid_save($entity, $entity_type) {
-
+  $trans_langcode = variable_get('bc_translate_gl_langcode', 'fr');
+  BCTranslateFactory::translate($entity_type, array($entity), $trans_langcode);
 }
