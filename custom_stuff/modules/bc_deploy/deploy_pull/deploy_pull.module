@@ -5,3 +5,16 @@
  */
 
 include_once 'deploy_pull.features.inc';
+
+/**
+ * Implements hook_services_resources_alter().
+ */
+function deploy_pull_services_resources_alter(&$resources, &$endpoint) {
+  // The Services Entity module, which provides our endpoint for fieldable 
+  // panels panes, doesn't play nice with UUID. UUID expects all service
+  // endpoints for entities to be keyed by the entity machine name.
+  // Services Entity prepends the word 'entity' onto the name however. We can
+  // get around this by creating a reference to the endpoint in this hook
+  // with the name UUID expects.
+  $resources['fieldable_panels_pane'] = &$resources['entity_fieldable_panels_pane'];
+}
