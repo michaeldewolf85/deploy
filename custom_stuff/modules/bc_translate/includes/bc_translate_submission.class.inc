@@ -114,7 +114,7 @@ class BCTranslateSubmission {
   private function setLanguage($lang_code) {
     $lang = language_default();
     if (!empty($this->languages[$lang_code])) {
-      $lang = $languages[$lang_code];
+      $lang = $this->languages[$lang_code];
     }
     $tpt_code = get_tpt_locale_code($lang->language);
     $this->form_state['values']['submission_target_locale'][$tpt_code] = $tpt_code;
